@@ -1,14 +1,16 @@
 from stats import count_words
 from stats import count_carackters
+import sys as sys
 def get_book_text(filepath):
     with open(filepath) as file:
         content = file.read()
     return content
+print("Usage: python3 main.py <path_to_book>")
 
-def main():
+def main(filepath):
     
-    words = count_words ("books/frankenstein.txt")
-    carackters = count_carackters("books/frankenstein.txt")
+    words = count_words (filepath)
+    carackters = count_carackters(filepath)
     
     carackters = dict(reversed(sorted(carackters.items(), key=lambda item,: item[1])))
     print("============ BOOKBOT ============")
@@ -18,4 +20,4 @@ def main():
     print("--------- Character Count -------")
     for i in carackters:
         print(f"{i}: {carackters[i]}")
-main()
+main(sys.argv[1])
