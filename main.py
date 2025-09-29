@@ -7,7 +7,15 @@ def get_book_text(filepath):
 
 def main():
     
+    words = count_words ("books/frankenstein.txt")
+    carackters = count_carackters("books/frankenstein.txt")
     
-    crackters = count_carackters("books/frankenstein.txt")
-    print(crackters)
+    carackters = dict(reversed(sorted(carackters.items(), key=lambda item,: item[1])))
+    print("============ BOOKBOT ============")
+    print("Analyzing book found at books/frankenstein.txt...")
+    print("----------- Word Count ----------")
+    print(f"Found {words} total words")
+    print("--------- Character Count -------")
+    for i in carackters:
+        print(f"{i}: {carackters[i]}")
 main()
